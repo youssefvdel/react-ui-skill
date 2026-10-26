@@ -13,4 +13,4 @@
 **Motion** — Two shader passes (paint, optional CRT) and a ping-pong RG16F velocity field that records pointer movement and decays; time drives flow and spin, clicks add twirls with a 3.2 s life. WebGL2, no library. Reduced motion still advances at 0.2× — it never freezes — though the loop parks when speed and rotation are zero and nothing is settling.
 **Cost** — 7 KB gzip, no dependencies. Device pixels are capped at a 2.4 MP budget, but the paint shader loops five times per pixel by default plus a field pass — the most expensive per-pixel shader in this batch. Client-only: prerenders an empty div.
 **Fit for ARKRETE** — no fit. A psychedelic card-game shader would put a red and blue swirl behind rooms that are the whole argument.
-**Verdict** — skip — spectacle with no subject, and it does not stop for reduced motion.
+**Verdict** — skip — spectacle with no subject, and reduced motion slows the swirl to a fifth of its pace, cuts its amount, skips the opening and drops the click swirl — it calms rather than stops.

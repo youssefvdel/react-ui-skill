@@ -1,15 +1,14 @@
 # Catalogue — 218 React Bits components, judged
 
-A worked example. The site this was judged for is a dark, photography-led
-marketing site for an interior fit-out contractor: one accent (brass),
-hairlines instead of cards, a 150 KB gzip JS budget, static prerendering,
-and an explicit refusal of stat rows, second accents and decorative motion.
+A worked example. The site this was judged for is a dark, photography-led marketing
+site for an interior fit-out contractor: one accent (brass), hairlines instead of
+cards, a 150 KB gzip JS budget, static prerendering, and an explicit refusal of stat
+rows, second accents and decorative motion.
 
 **Adopt 1 · adapt 26 · skip 191** — from 218 components.
 
-The point of publishing this is not the verdicts: it is that a verdict
-without a reason is a preference. Every row names the work it would have to
-displace.
+The point of publishing this is not the verdicts: it is that a verdict without a
+reason is a preference. Every row names the work it would have to displace.
 
 
 ## Adopted

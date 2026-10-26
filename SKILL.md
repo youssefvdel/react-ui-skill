@@ -201,6 +201,14 @@ example (`references/catalog.md`):
   version instead of adding a second animation library.
 - **A vendor port must keep the mechanism and drop the skin.** Copy-pasting the
   demo styling is how a designed site starts to look like a component gallery.
+- **Never repeat a doc's claim that a component ignores reduced motion.**
+  Fifteen of 218 docs said it; three were genuinely wrong and the rest were
+  prose that reads like the same claim ("No GSAP; reduced motion drops the
+  shake"). Grep the payload for `matchMedia('(prefers-reduced-motion` and read
+  how the flag is used before writing the sentence — a regex cannot tell the two
+  apart, which is why this check is prose and not a script.
+- **Count the flags, not the words.** A component that reads the query and only
+  skips its intro is not "reduced-motion aware". Say what it actually stops.
 
 ---
 
