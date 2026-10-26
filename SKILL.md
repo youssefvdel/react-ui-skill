@@ -226,9 +226,12 @@ A catalogue that passes the script but reads like marketing was written from
 
 ## Files
 
-- `references/catalog.md` — worked example: 218 components judged for a dark,
-  photography-led site, with the reason each one was adopted, adapted or
-  rejected.
+- `references/catalog.md` — worked example: 218 components judged from their
+  source for a dark, photography-led site, with the reason each one was adopted,
+  adapted or rejected.
+- `references/visual-review.md` — the same catalogue looked at: 216 demos
+  photographed, tiled and reviewed by eye, and the six verdicts the pixels
+  overturned.
 - `references/porting.md` — how to vendor a component into a design system
   without importing its demo look.
 - `references/brief-template.md` — the rubric to paste into each subagent.
