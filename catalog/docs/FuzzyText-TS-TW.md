@@ -1,0 +1,8 @@
+# FuzzyText
+**Registry**: `FuzzyText-TS-TW` · **Deps**: none · **Files**: `FuzzyText/FuzzyText.tsx`
+**What it does** — Renders text onto a 2D canvas that constantly vibrates and jitters by slicing it into 1px horizontal or vertical strips displaced by random noise. On hover or click, the displacement amplitude surges into severe static or chromatic glitch splitting.
+**Props** — `fontSize` (number | string, 'clamp(2rem, 8vw, 8rem)') — font size for the rendered text; `fontWeight` (string | number, 900) — font weight; `color` (string, 'currentColor') — text ink color; `enableHover` (boolean, true) — increases jitter amplitude on pointer hover; `baseIntensity` (number, 0.18) — resting jitter strength; `hoverIntensity` (number, 0.5) — peak jitter strength on hover; `fuzzRange` (number, 30) — maximum pixel displacement range; `direction` ('horizontal' | 'vertical' | 'both', 'horizontal') — slice displacement orientation.
+**Motion** — Continuous requestAnimationFrame 2D canvas draw loop slicing the offscreen text canvas into strips and drawing them with randomized offsets; throttled to configured `fps` (default 60). Pauses when intensity drops below threshold under reduced motion.
+**Cost** — 19.4 KB source, no external packages. Multiple offscreen 2D canvas elements with dozens to hundreds of `drawImage` slice calls per frame on the main thread CPU. Client-only (canvas mount, hides text from initial SSR / SEO unless aria-label is read).
+**Fit for ARKRETE** — no fit — shivering CRT glitch static and vibrating fuzzy text reads as cybernetic or distressed VHS horror, the exact opposite of calm, stone-and-brass architectural permanence.
+**Verdict** — skip — vibrating glitch-static text canvas destroys editorial legibility and architectural tone.

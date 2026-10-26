@@ -1,0 +1,8 @@
+# Prism
+**Registry**: `Prism-TS-TW` · **Deps**: none · **Files**: `Prism/Prism.tsx`
+**What it does** — Paints a full-bleed canvas of a slowly turning glass pyramid that refracts a spectral gradient, with a 1.4 s intro and a faint pointer-follow tilt. `colors` replaces the built-in spectrum with up to eight of your own stops.
+**Props** — `height` (number, 3.5) — pyramid height in shader units; `baseWidth` (number, 5.5) — base width; `animationType` ('rotate' | '3drotate' | 'hover' | 'static', 'rotate') — spin, spin on two axes, cursor-only or still; `glow` (number, 1) — edge halo; `colors` (string[], spectral) — palette sampled into a 64-stop texture; `saturation` (number, 1.5); `timeScale` (number, 0.5) — rotation speed; `resolution` (number, 0.5) — render scale, 0.25–1.
+**Motion** — Shader time drives the rotation and the colour travel; pointer position adds yaw and pitch through spring inertia; `prefers-reduced-motion` freezes time and skips the intro; rAF stops when the canvas leaves the viewport or the tab hides. Needs WebGL2 only — no three.js, no GSAP, no Framer Motion.
+**Cost** — Zero dependencies, about 5.4 KB gzip of source. One full-screen fragment shader running a 100-step raymarch per pixel at half resolution with DPR capped at 2, so it is fill-rate bound: fine in a 700×500 panel, expensive full-bleed on a 4K screen. Prerenders as an empty `<div><canvas>` so SSR is safe, but it is blank without WebGL2 and only paints after hydration.
+**Fit for ARKRETE** — No fit. A spectral prism behind the home monument wordmark would add a second accent, and a brass-tinted variant is still a per-pixel raymarch buying a glow the existing gradients already draw.
+**Verdict** — skip — heavy fragment work for decoration that competes with the wordmark.

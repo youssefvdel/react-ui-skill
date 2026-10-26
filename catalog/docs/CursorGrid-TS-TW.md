@@ -1,0 +1,8 @@
+# CursorGrid
+**Registry**: `CursorGrid-TS-TW` · **Deps**: none · **Files**: `CursorGrid/CursorGrid.tsx`
+**What it does** — Draws a hairline grid across its box whose cells light up and fade in a radius around the cursor, with line, dash, dot or cross marks and an optional soft fill. Content can sit on top as children.
+**Props** — `cellSize` (number, 60) — grid pitch in px. `radius` (number, 140) — radius of the lit area. `color` / `gridColor` (string) — lit cells versus resting lines. `gridStyle` ('lines' | 'dashed' | 'dots' | 'crosses', 'lines') — line, dash, dot or cross marks. `highlight` ('area' | 'cell', 'area') — whether the whole radius lights or single cells do. `fillOpacity` (0.06) / `gridOpacity` (0.08) — how present the grid is at rest. `spotlight` (number, 0.6) — extra glow under the cursor. `edgeFade` (number, 0.2) — vignette on the grid edges.
+**Motion** — Pointer position is written into a small state texture each frame and read by the fragment shader, so cells brighten with a smooth falloff and decay over `holdTime`/`fadeDuration`; clicks emit a pulse, `ambient` spawns random cells. The RAF sleeps once nothing is lit. Reduced motion kills the intro, ambient spawns and click pulses.
+**Cost** — Zero dependencies but ~23 KB of source and its own WebGL2 context; one state texture and one canvas behind the children, cost is pixel-bound and modest. Client-only, blank in prerender, and nothing renders without WebGL2.
+**Fit for ARKRETE** — No fit. A drafting grid is a blueprint motif; the site's ground is deliberately empty.
+**Verdict** — skip — ambient decoration, which the brief rules out by name.

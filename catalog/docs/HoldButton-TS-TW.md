@@ -1,0 +1,8 @@
+# HoldButton
+**Registry**: `HoldButton-TS-TW` · **Deps**: none · **Files**: HoldButton/HoldButton.tsx
+**What it does** — A pill button that fills with colour while you press and hold: a liquid edge with a wavy crest rises from the left (or the bottom) and the label cross-fades to its done state when the fill arrives. Release early and it drains back in 200 ms without firing.
+**Props** — `holdTime` (number, 2000) — ms to complete; `releaseTime` (number, 200) — drain duration; `resetAfter` (number, 1200) — ms before returning to idle; `fillColor` / `fillTextColor` (string, #5227FF / #ffffff); `fillDirection` (`right` | `up`, right); `wave` / `waveAmplitude` (boolean / number, true / 6) — the crest; `size` (`sm` | `md` | `lg`, md); `onHold` / `onTap` — completion and short-press callbacks.
+**Motion** — CSS `clip-path` inset driven by a `--hb-p` variable, animated by one rAF only during press and drain; the wavy edge is a repeating SVG mask scrolled by the same variable. A glow pulse and a 0.97 press scale on completion. No library, no canvas.
+**Cost** — Zero deps, ~4 KB gzip, no layout thrash; safe to prerender. Keyboard works (Space/Enter hold, Escape cancels), dragging off cancels, and reduced motion falls back to a plain opacity fill. It injects its `<style>` block inside every instance, so several buttons duplicate that CSS.
+**Fit for ARKRETE** — Contact, the inquiry form's submit: brass fill, bone label, ~1.2 s hold, "Hold to send" becoming "Sent". It makes the one action on the site deliberate and stops stray clicks.
+**Verdict** — adapt — restyle to brass, drop the purple and glow defaults, shorten the hold; the only real risk is friction on the conversion form.

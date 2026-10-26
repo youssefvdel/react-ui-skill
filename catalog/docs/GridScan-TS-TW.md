@@ -1,0 +1,8 @@
+# GridScan
+**Registry**: `GridScan-TS-TW` · **Deps**: none · **Files**: GridScan/GridScan.tsx
+**What it does** — Draws a perspective room made only of glowing grid lines — eight cells wide, three units deep — with floor reflections, corner points and a soft bloom. A band of light sweeps through the room on a loop, leaving a fading trail, and the camera leans toward the pointer.
+**Props** — `cells` (number, 8) — grid density; `depth` (number, 3) — how far the room recedes; `lineStyle` (`solid` | `dashed` | `dotted`, solid) — stroke pattern; `linesColor` (string, #4d4757) — grid ink; `scanColor` (string, #7dd3fc) — sweep colour; `scanDuration` / `scanDelay` (number, 2.4 / 1.6) — sweep speed and rest; `clickEffect` (`ping` | `scan` | `none`, ping) — what a click sends; `enableWebcam` (boolean, false) — face tracking that steers the room.
+**Motion** — Continuous WebGL2 loop while visible: one scan plane travelling through depth, pointer parallax with easing, up to four click ripples, a 2.2 s intro reveal. No library; raw WebGL2, not canvas 2D. Reduced motion renders one static frame with no scan, parallax or gyro.
+**Cost** — Zero deps, ~11 KB gzip of source, four full-screen passes (room, downsample, blur, composite) at DPR ≤ 2; the rAF stops once the scene settles and pauses offscreen. The optional webcam path pulls face-api.js plus model weights from CDNs (~700 KB) and asks for camera permission — never ship that. Prerenders to an empty canvas, so it needs a poster frame behind it.
+**Fit for ARKRETE** — no fit — a wireframe grid room is a sci-fi HUD, and ARKRETE's rooms are photographed, not diagrammed; its default scan colour is also a cyan second accent.
+**Verdict** — skip — demo-reel spectacle with no job on any of the five pages.

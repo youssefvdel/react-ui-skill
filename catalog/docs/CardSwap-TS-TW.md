@@ -1,0 +1,8 @@
+# CardSwap
+**Registry**: `CardSwap-TS-TW` · **Deps**: `@hugeicons/react@^1.1.10`, `@hugeicons/core-free-icons@^4.3.3` · **Files**: CardSwap/CardSwap.tsx
+**What it does** — Stacks interactive cards in an angled isometric 3D deck where the front card cycles to the back on a timer or fling. Dragging pulls cards with tilt and bounce physics, while hovering fans the deck out in perspective.
+**Props** — `items` (CardSwapItem[], 4 demo cards) — card data array; `cardDistance` (number, 50) — horizontal spacing between stacked cards; `verticalDistance` (number, 65) — vertical step between cards; `depth` (number, 90) — z-axis perspective distance; `skewAmount` (number, 4) — stack skew angle; `autoplay` (boolean, false) — cycles cards automatically; `delay` (number, 3000) — autoplay interval in ms; `draggable` (boolean, true) — enables pointer drag gestures.
+**Motion** — Sub-stepped Verlet spring physics loop running at 240 Hz on rAF, driving `translate3d`, `rotateZ`, `skew`, and opacity directly on card DOM elements; pointer drag with velocity release and hover spread. No external motion libraries; reduced motion disables autoplay and spring smoothing.
+**Cost** — 33 KB source; heavy per-frame style manipulation across all visible cards during drag or autoplay; depends on `@hugeicons` packages for default icons. Safe for static prerender, but requires client hydration for interaction.
+**Fit for ARKRETE** — no fit. A tilted, skewed card deck with fling physics trivializes architectural spaces; ARKRETE's projects page already uses a deliberate vertical scroll stack.
+**Verdict** — skip — skewed card deck with fling physics demeans room photography and conflicts with the site's calm scroll stack.

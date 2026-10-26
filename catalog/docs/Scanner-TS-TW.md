@@ -1,0 +1,8 @@
+# Scanner
+**Registry**: `Scanner-TS-TW` · **Deps**: none · **Files**: Scanner/Scanner.tsx
+**What it does** — Renders a field of fine interference bands with a WebGL2 shader, swept by a bright scan head that leaves a lit trail, finished with CRT scanlines, grain, vignette and a coloured fringe. The pointer acts as a lens that bends bands toward or away from it, and clicks send ring pings through the field.
+**Props** — `color1` / `color2` / `color3` (#5227FF / #FF9FFC / #FFFFFF) — band, lit and peak tones; `scanDirection` ('vertical' | 'horizontal' | 'diagonal', vertical) — sweep axis; `bandDensity` (11) — bands per unit; `sweepSpeed` (0.25) — head travel; `glow` (0.6) — halo around lit lines; `mouseStrength` (0.7) — lens distortion; `clickEffect` ('ping' | 'none', ping) — click rings; `opacity` (1) — output alpha.
+**Motion** — Time drives the wave distortion and the sweep; the pointer lens and ping rings add local light and a short-lived ripple. Continuous rAF while visible unless speed and sweepSpeed are both zero, plus a 2 s intro that wipes a reveal front across the frame. Reduced motion freezes wave and sweep and skips the intro, leaving one lit static frame.
+**Cost** — Zero dependencies, 18 KB of source, one fullscreen triangle and a single fragment pass at DPR ≤ 2. WebGL2 only with no fallback — a failed context leaves an empty box — and the canvas is decorative and aria-hidden, so it adds nothing to prerender. Client-only.
+**Fit for ARKRETE** — no fit — a CRT readout belongs to a monitoring product, not a fit-out contractor, and the violet/pink defaults would break the single-accent rule on sight.
+**Verdict** — skip — sci-fi surface effect with no job on any page, and two accents in its defaults.

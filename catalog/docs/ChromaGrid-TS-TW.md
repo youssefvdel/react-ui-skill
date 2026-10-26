@@ -1,0 +1,8 @@
+# ChromaGrid
+**Registry**: `ChromaGrid-TS-TW` · **Deps**: none · **Files**: ChromaGrid/ChromaGrid.tsx
+**What it does** — Arranges photography cards in a responsive grid where images appear desaturated and dimmed until a cursor spotlight reveals full color. Hovering also draws an illuminated border and radial color wash matching each card's individual accent.
+**Props** — `items` (ChromaItem[], 6 demo items) — card data array; `columns` (number, 3) — target column count for the grid; `radius` (number, 260) — spotlight beam radius in pixels; `softness` (number, 0.6) — edge falloff gradient softness; `damping` (number, 0.45) — inertia easing factor for pointer follow; `grayscale` (number, 1) — saturation reduction multiplier; `dim` (number, 0.12) — unhovered card dimming factor; `reveal` ('spotlight' | 'card', 'spotlight') — spotlight circle or whole-card hover reveal.
+**Motion** — rAF loop eases pointer coordinates to CSS variables (`--chroma-x`, `--chroma-y`, `--chroma-power`), driving a radial-gradient mask on an overlaid color image layer and accent glow. Reduced motion snaps coordinates instantly without lerp. No external motion libraries.
+**Cost** — Zero dependencies, ~15 KB source; requires dual layered image elements per card and continuous CSS mask updates during pointer movement. Safe for static prerender (cards display with initial CSS vars).
+**Fit for ARKRETE** — no fit. Arkrete treats photography as the argument; draining color from fit-out craft until hovered contradicts the brand, and per-card multicolor accent glows violate the single brass rule.
+**Verdict** — skip — draining color from fit-out photography until hovered demeans the work, and multicolored borders violate the single brass accent rule.

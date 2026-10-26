@@ -1,0 +1,8 @@
+# EvilEye
+**Registry**: `EvilEye-TS-TW` · **Deps**: ogl@^1.0.11 · **Files**: EvilEye/EvilEye.tsx
+**What it does** — A full-bleed WebGL canvas drawing one procedural eye: a slit pupil that follows the pointer, a fibrous iris in ember orange, and a flame halo burning around the outer ring. There is no DOM content at all, only the shader.
+**Props** — `eyeColor` (string, #FF6F37) — iris and pupil colour; `intensity` (number, 1.5) — brightness of the iris fibres; `pupilSize` (number, 0.6) — pupil radius; `irisWidth` (number, 0.25) — thickness of the iris band; `glowIntensity` (number, 0.35) — strength of the outer flame; `scale` (number, 0.8) — zoom of the eye inside the frame; `pupilFollow` (number, 1) — how far the pupil tracks the cursor; `flameSpeed` (number, 1) — speed of the noise scrolling through the iris.
+**Motion** — Time-driven: the iris noise scrolls forever, the pupil lerps toward the pointer at 5% a frame, and the halo flickers. Raw WebGL through ogl, one triangle and one rAF loop that never pauses when offscreen or when the tab is hidden, with no reduced-motion branch.
+**Cost** — ogl adds roughly 10–15 KB gzip on top of 9 KB of source. A 256×256 fractal-noise texture is generated in JS on mount, then a full-screen fragment shader runs at device pixel ratio (ogl caps at 2) every frame — a permanent GPU tax for a decorative eye. Client-only; the prerendered HTML is an empty div.
+**Fit for ARKRETE** — no fit — a literal eye is a horror motif, and its default orange would be a second accent on a brass-only site.
+**Verdict** — skip — off-world imagery, an always-on full-screen loop, and no calm static version.

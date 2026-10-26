@@ -1,0 +1,8 @@
+# GlareHover
+**Registry**: `GlareHover-TS-TW` · **Deps**: none · **Files**: GlareHover/GlareHover.tsx
+**What it does** — Wraps any element in a positioned box and sweeps a soft band of light across it, entering from the side the cursor came from, with an optional glint running around the border. It works on buttons, cards or images without changing their layout.
+**Props** — `glareColor` (string, #ffffff) — light colour; `glareOpacity` (number, 0.5) — band alpha; `glareAngle` (number, -45) — sweep direction in degrees; `glareSize` (number, 30) — band width as a percentage of the diagonal; `variant` ('streak' | 'twin' | 'sheen', 'streak') — one band, two bands, or a wide wash; `mode` ('hover' | 'follow' | 'loop' | 'click', 'hover') — what starts it; `rimGlint` (boolean, true) — light the 1px edge too; `transitionDuration` (number, 650) — milliseconds for a full sweep.
+**Motion** — Pure CSS transforms on two absolutely positioned spans; a rAF loop runs only while a sweep is in flight, then stops. Hover sweeps in on enter and out on leave, `focus-visible` sweeps too, and reduced motion suppresses every sweep so the band rests outside the box.
+**Cost** — 11.3 KB of source, no packages, four spans and one `ResizeObserver`. The gradient is a 33-stop `color-mix` string rebuilt on render, not per frame. Markup is inert and prerenders safely; the glare never covers text because the layer is `pointer-events-none`.
+**Fit for ARKRETE** — Contact, the single brass "Send inquiry" button: a `sheen` pass at low opacity reads as the metal catching light, and it only exists on the one action the palette reserves brass for.
+**Verdict** — adopt — cheap, dependency-free, reduced-motion-safe, and it gives the action a material response instead of a glow.

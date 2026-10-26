@@ -1,0 +1,8 @@
+# Stack
+**Registry**: `Stack-TS-TW` · **Deps**: motion@^12.23.12 · **Files**: Stack/Stack.tsx
+**What it does** — A pile of card-sized React nodes; drag the top one and the rest lift and fan, release past the threshold and the card is flung off the pile and tucks underneath. Arrow keys always cycle the top card, a click can be told to, and it can play itself on a timer.
+**Props** — `cards` (ReactNode[], Unsplash photos) — the card contents; `layout` ('fan' | 'cascade' | 'deck' | 'pile', 'fan') — rest arrangement; `visible` (number, 4) — cards in the pile; `spread` (number, 0.5) — offset per card; `depth` (number, 0.5) — scale and shade per card; `tilt` (number, 30) — degrees of lean while dragging; `threshold` (number, 90) — px drag before the card is thrown; `autoplay` (boolean, false) with `autoplayDelay` (3000 ms) — self-cycling.
+**Motion** — Motion springs for place, settle, tuck, lean and fling; the dragged card tilts in 3D toward the grab point, and velocity is sampled over the last 100 ms so a flick throws in the flick's direction. The thrown card flies past the bounds, then re-enters at the bottom. Reduced motion swaps to 0.2 s fades and instant reordering.
+**Cost** — `motion` (about 34 KB gzip) and 24 KB of source. Thirteen motion values per card, a rAF watcher during each throw, window pointer listeners while dragging. Client-only interaction; the first frame renders all cards stacked at their rest offsets.
+**Fit for ARKRETE** — Projects already has a scroll-driven stack of rooms; this is a drag deck, a different and more playful way to browse the same content.
+**Verdict** — skip — a deck the visitor has to drag makes the rooms work to be seen, and the flick physics reads as a toy next to a scroll reel.

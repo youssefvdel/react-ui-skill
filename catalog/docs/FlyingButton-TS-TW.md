@@ -1,0 +1,8 @@
+# FlyingButton
+**Registry**: `FlyingButton-TS-TW` · **Deps**: none · **Files**: `FlyingButton/FlyingButton.tsx`
+**What it does** — An action button equipped with rocket thruster pods that ignites exhaust jets on hover or click, launches into the air trailing a volumetric WebGL particle smoke plume, and navigates back to touch down. It can optionally carry the user's cursor along or launch off an SVG stunt ramp.
+**Props** — `trigger` ('hover' | 'click', 'hover') — event that ignites thrusters and initiates flight; `altitude` (number, 170) — flight apex height in pixels; `hoverTime` (number, 2.4) — duration airborne in seconds before descent; `jets` (number, 2) — number of rocket thruster pods (1 to 4); `thrusters` (boolean, true) — renders physical engine pods beneath the button frame; `smoke` (number, 1) — density and emission rate of the particle smoke plume; `carryCursor` (boolean, true) — captures and carries the mouse cursor along with the flying button; `ramp` (boolean, false) — adds an SVG curved ramp beneath the launch trajectory.
+**Motion** — WebGL particle simulation for exhaust smoke plumes combined with custom physics splines for button translation, banking wobble, and thruster flare intensity. Triggered on hover or click.
+**Cost** — 76.3 KB source (2,380 lines), no npm dependencies. Client-only WebGL particle system and SVG overlay; hijacks cursor coordinates during flight and runs heavy particle updating loops.
+**Fit for ARKRETE** — no fit — a rocket button blasting smoke plumes and flying across the screen is an extreme novelty that destroys luxury credibility.
+**Verdict** — skip — novelty rocket button that is the antithesis of quiet architectural luxury.

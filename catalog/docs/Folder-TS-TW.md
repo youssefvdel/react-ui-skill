@@ -1,0 +1,8 @@
+# Folder
+**Registry**: `Folder-TS-TW` · **Deps**: none · **Files**: `Folder/Folder.tsx`
+**What it does** — A skeuomorphic manila or frosted glass file folder that swings open its front flap or opens like a book when clicked, revealing stacked paper document cards inside. Users can click to fan out or zoom into documents, and drag sheets out of or back into the folder.
+**Props** — `items` (FolderEntry[], DEFAULT_ITEMS) — array of cards, images, or elements stored inside; `mode` ('flap' | 'book', 'flap') — whether the front flap drops down or opens like a book cover; `variant` ('solid' | 'glass' | 'matte', 'solid') — material texture and finish; `color` (string, '#3d8bff') — cover tint; `tabPosition` ('left' | 'center' | 'right', 'right') — top tab placement; `layout` ('spread' | 'stack' | 'row', 'spread') — arrangement of revealed paper documents; `draggable` (boolean, true) — permits plucking and dragging documents outside the folder; `openOn` ('click' | 'hover', 'click') — interaction trigger.
+**Motion** — Custom Euler/spring physics loop via requestAnimationFrame animating 3D matrix transforms, drop shadows, tilt, and flap angles; WebGL shader for frosted glass variant.
+**Cost** — 85.4 KB source (2,462 lines), no npm dependencies. Heavy DOM tree with dozens of styled spans and divs, continuous physics ticker, and optional WebGL canvas context. Prerenders static closed folder wrapper.
+**Fit for ARKRETE** — no fit — skeuomorphic desktop folder metaphor with fanned documents and draggable paper sheets completely clashes with a dark luxury architectural world.
+**Verdict** — skip — skeuomorphic desktop folder widget that does not belong on a refined architectural site.

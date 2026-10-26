@@ -1,0 +1,8 @@
+# FluxLines
+**Registry**: `FluxLines-TS-TW` · **Deps**: none · **Files**: `FluxLines/FluxLines.tsx`
+**What it does** — Glowing, undulating contour lines drift across a dark field like magnetic ferrofluid or topographic currents. Moving the pointer creates a magnetic attractor that curls and pulls the lines into luminous whorls, and clicking triggers a spinning vortex swirl.
+**Props** — `colors` (string[], `['#ffffff', '#ffffff', '#ffffff']`) — palette stops for the contour field; `speed` (number, 0.5) — wave drift velocity; `scale` (number, 1.6) — field zoom level; `turbulence` (number, 1) — procedural noise distortion multiplier; `glow` (number, 2) — luminous fringe intensity; `lineWidth` (number, 1) — thickness of contour lines; `mouseInteraction` (boolean, true) — attracts and distorts field lines toward pointer; `clickSwirl` (boolean, true) — spawns a decaying rotational swirl on click.
+**Motion** — Continuous WebGL2 fragment shader evaluating procedural noise, screen-space derivatives (dFdx/dFdy), and pointer attraction vectors every frame; click triggers a decaying angular swirl. Pauses via IntersectionObserver or when `paused` is true. Reduced motion requires `paused={true}`.
+**Cost** — 17.9 KB source, no npm dependencies. WebGL2 canvas context executing expensive screen-space derivative shaders every frame; client-only canvas in `useEffect` with transparent fallback before mount.
+**Fit for ARKRETE** — no fit — glowing generative magnetic currents act as decorative wallpaper that distracts from physical materials and adds luminous noise.
+**Verdict** — skip — decorative ferrofluid shader that burns GPU and conflicts with quiet architectural surfaces.

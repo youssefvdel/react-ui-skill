@@ -1,0 +1,8 @@
+# StaggeredMenu
+**Registry**: `StaggeredMenu-TS-TW` · **Deps**: gsap@^3.13.0 · **Files**: StaggeredMenu/StaggeredMenu.tsx
+**What it does** — A header with a plus icon that folds into an X and a side panel that slides in behind two or three coloured pre-layers. Menu items rise out of a mask one by one, optionally numbered 01/02, and social links fade up at the panel foot.
+**Props** — `items` ({ label, ariaLabel, link }[]) — the menu entries; `colors` (string[], purple pair) — pre-layer stack behind the panel; `position` ('left' | 'right', 'right') — which edge it enters from; `accentColor` (string, #5227FF) — hover, numbering and socials; `displayItemNumbering` (boolean, true) — the 01/02 counter; `displaySocials` (boolean, true) — socials block; `isFixed` (boolean, required) — full-viewport overlay; `closeOnClickAway` (boolean, true) — outside click closes.
+**Motion** — One GSAP timeline: pre-layers slide in 0.07 s apart, the panel follows at 0.65 s power4, items go from `yPercent: 140` and 10° rotation to flat with a 0.1 s stagger, socials last. The toggle text rolls through Menu/Close three times. There is no reduced-motion branch anywhere.
+**Cost** — GSAP core, roughly 28 KB gzip, plus 25 KB of component with a 100-line inline `<style>` block. The panel is hard-coded white with black 4rem uppercase type and a 12 px backdrop blur; the logo is an `<img>` pointing at a React Bits asset. No focus trap and no Esc handler.
+**Fit for ARKRETE** — The site header, if it ever gets a full menu. But white, uppercase, numbered and blurred is the opposite of the near-black sentence-case world.
+**Verdict** — skip — wrong palette and type throughout, and it animates for everyone with no reduced-motion path; the stagger itself is twenty lines of CSS.

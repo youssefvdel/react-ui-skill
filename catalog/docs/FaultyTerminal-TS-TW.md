@@ -1,0 +1,8 @@
+# FaultyTerminal
+**Registry**: `FaultyTerminal-TS-TW` · **Deps**: none · **Files**: FaultyTerminal/FaultyTerminal.tsx
+**What it does** — Fills its container with a curved CRT of glowing glyphs: a grid of block, dot or character cells that scramble and drift behind scanlines, with a phosphor trail following the cursor and a glitch burst on click. It is a screen, not a surface — everything is rendered in one fragment shader.
+**Props** — `glyphs` ('blocks' | 'dots' | 'characters', 'blocks') — cell shape; `tint` (string, #ffffff) — phosphor colour; `scale` (number, 1) — glyph grid zoom; `curvature` (number, 0.2) — screen bow; `scanlineIntensity` (number, 0.3) — line darkness; `glitchAmount` (number, 1) — horizontal tearing; `mouseReact` (boolean, true) — cursor trail and glow; `clickEffect` ('glitch' | 'degauss' | 'none', 'glitch') — what a click does.
+**Motion** — WebGL2, one full-screen shader with a 5×7 glyph bitmask, plus two framebuffers that keep the phosphor trail alive between frames. Glyph scramble and scanlines advance with a clock, the cursor smears light, and a click injects a decaying distortion. The loop stops when idle, offscreen or hidden; reduced motion freezes the clock and zeroes glitch and flicker.
+**Cost** — 31 KB of source (about 9 KB gzip) and no dependencies, but at DPR up to 2 it is two or three full-screen passes per frame, so it costs more than its byte count suggests. Nothing is prerenderable — the container is an empty div and the glyph atlas is computed in JS at mount.
+**Fit for ARKRETE** — no fit — a retro terminal would read as a hackathon page, and no section of the site is about technology.
+**Verdict** — skip — a tech-demo effect with no job, on the wrong brand entirely.

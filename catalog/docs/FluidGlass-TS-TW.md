@@ -1,0 +1,8 @@
+# FluidGlass
+**Registry**: `FluidGlass-TS-TW` · **Deps**: none · **Files**: `FluidGlass/FluidGlass.tsx`
+**What it does** — A 3D glass object floating over text or imagery that refracts, splits chromatic dispersion, and casts soft shadows onto the background plane. The pointer smoothly drags or tilts the lens across the canvas, and clicking morphs the signed distance field between 3D geometric shapes.
+**Props** — `shape` (Shape, 'torus') — initial 3D SDF geometry; `size` (number, 260) — diameter of the glass object in pixels; `refraction` (number, 1) — index of refraction strength; `dispersion` (number, 0.35) — chromatic aberration split width; `reflection` (number, 1) — Fresnel highlight brightness; `frost` (number, 0) — surface roughness and internal blur; `interaction` ('follow' | 'drag' | 'tilt' | 'none', 'follow') — pointer tracking mode; `morphOnClick` (boolean, true) — cycles through geometry shapes on pointer click.
+**Motion** — Continuous requestAnimationFrame WebGL raymarching loop driving spring-damped pointer tracking, idle rotation, and animated SDF smooth-min morphing on click; raw WebGL shaders without external 3D libraries. Pauses loop when offscreen via IntersectionObserver.
+**Cost** — 52.6 KB source, no npm dependencies. Client-only WebGL canvas mounted inside useEffect; heavy per-pixel raymarching with internal refraction ray loops and soft shadow samples, creating significant fill-rate cost on high-DPI displays.
+**Fit for ARKRETE** — no fit — a floating chromatic glass blob refracting text is a decorative tech demo that distorts architectural photography and breaks editorial typography.
+**Verdict** — skip — raymarched glass lens gimmick distorts photography and has no architectural purpose.

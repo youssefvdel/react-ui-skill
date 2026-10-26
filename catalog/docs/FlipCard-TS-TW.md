@@ -1,0 +1,8 @@
+# FlipCard
+**Registry**: `FlipCard-TS-TW` · **Deps**: motion@^12.23.12 · **Files**: FlipCard/FlipCard.tsx
+**What it does** — A two-faced card that turns over in 3D on a click, or on a drag and flick past the halfway point, settling on a spring with a soft cast shadow and an optional sheen. Both faces are real DOM, so the back copy exists in the HTML even when hidden.
+**Props** — `front` / `back` (ReactNode) — the two faces; `axis` ('y' | 'x', 'y') — which way it turns; `flipOnClick` (boolean, true) — click to flip; `draggable` (boolean, true) — drag or flick to flip; `tilt` (boolean, true) with `tiltMax` (number, 12) — pointer tilt in degrees; `glare` (boolean, true) — moving sheen across the face; `width` / `height` (number, 300 / 400); `onFlipChange` (flipped) — controlled-state callback.
+**Motion** — motion/react motion values and springs: the drag writes rotation from pointer travel and releases with its velocity, a second spring adds the tilt, and the shadow and sheen are derived from the facing angle. Reduced motion drops the rotation and cross-fades the faces; it is a `role="button"` with `aria-pressed` and Enter/Space handled.
+**Cost** — the `motion` runtime is roughly 20–30 KB gzip for 13 KB of source, and two faces are always in the DOM with compositor-only transforms, so nothing reflows. It prerenders safely, keyboard accessible, and needs no window at render time.
+**Fit for ARKRETE** — Services, the five trade cards: photograph and trade name on the front, the scope of that trade on the back.
+**Verdict** — adapt — copy the flip, the reduced-motion cross-fade and the a11y, but rebuild it as a CSS 3D toggle and leave the `motion` dependency, glare and tilt behind.

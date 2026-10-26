@@ -1,0 +1,8 @@
+# HoloCard
+**Registry**: `HoloCard-TS-TW` · **Deps**: none · **Files**: HoloCard/HoloCard.tsx
+**What it does** — A portrait card, 320 px wide at a 63:88 ratio, showing a photo under a holographic foil: faceted rainbow bands, edge sparkle and a moving glare that slide as the card tilts. Left alone it drifts slowly; with `backImage` it flips to a back face on click or Enter.
+**Props** — `image` / `backImage` (string) — front and optional reverse; `preset` (`bursts` | `stars` | `shards` | `cosmos` | `rainbow` | `swirl` | `glitter` | `gold`, bursts) — foil pattern; `intensity` (number, 0.85); `tiltMax` (number, 14) — degrees of pointer tilt; `glare` (number, 0.5) and `edgeSparkle` (number, 0.8); `width` (number, 320) and `radius` (number, 14); `idle` (boolean, true) — autonomous drift.
+**Motion** — Pointer tilt is a spring on a CSS 3D rotor; foil, facets, glitter and glare are one fragment shader on a canvas covering the image. Idle drift keeps a rAF running whenever the card is visible, and the flip is a spring to 180°. WebGL2, no library. Reduced motion freezes tilt, drift and the foil's drift.
+**Cost** — No deps, ~8 KB gzip, one small canvas per card at DPR ≤ 2 and one texture upload. Cheap per card, but `idle` defaults on, so it never fully sleeps — and a grid of them is a row of GL contexts. The image loads with `crossOrigin="anonymous"`. Prerenders as the plain `<img>`; foil appears after hydration.
+**Fit for ARKRETE** — no fit — a collectible trading card with rainbow foil is the inverse of a near-black, single-accent world, and there is nothing to collect.
+**Verdict** — skip — a well-built effect that is completely off-brand.

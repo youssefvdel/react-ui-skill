@@ -1,0 +1,8 @@
+# Strands
+**Registry**: `Strands-TS-TW` · **Deps**: none · **Files**: `Strands/Strands.tsx`
+**What it does** — A full-bleed fragment shader of three spectral strands twisting inside a frosted glass orb, swelling into a smooth bulge where they meet, with refraction and rim light on the glass. It leans toward the pointer, brightens on hover and pulses on click.
+**Props** — `colors` (string[], seven-colour default) — the strand ramp; `count` (number, 3) — number of strands; `glass` (boolean, true) with `refraction`, `dispersion`, `glassSize` — the orb lens; `energy` (number, 0.65) — bulge and brightness; `level` (number) — external audio level 0–1; `listening` (boolean, false) — synthesises a speech envelope when no level is supplied; `interactive` (boolean, true) — pointer lean and hover swell; `intro` (boolean, true) — a 1.4 s build-in.
+**Motion** — A continuous raf clock advances the shader; pointer move sets lean and hover, pointer down adds a pulse. All motion is WebGL2 GLSL inside one full-screen quad; no animation library.
+**Cost** — No dependency, ~25 KB of source, one full-screen fragment shader doing per-pixel ray work — fill-rate bound, so mobile GPUs pay for every pixel. Client-only: the canvas is created in an effect and the container needs an explicit height; under `prefers-reduced-motion` the clock freezes and it draws a still frame.
+**Fit for ARKRETE** — no fit. The reference is Siri's orb: a seven-colour spectral palette and an "AI assistant" silhouette, dropped into a dark room-photography site.
+**Verdict** — skip — a second palette and a permanent GPU burn for an object that says nothing about fit-out.

@@ -1,0 +1,8 @@
+# GhostFibers
+**Registry**: `GhostFibers-TS-TW` · **Deps**: none · **Files**: GhostFibers/GhostFibers.tsx
+**What it does** — A full-bleed field of fine glowing fibres arranged in layered ribbons that twist, fold and roll through a soft depth of field, with bloom, dust motes, sparkle, vignette and grain. Pointer movement can focus or part the fibres, and a click sends a pulse through them.
+**Props** — `glowColor` (string, #8b5cf6) — fibre colour; `layers` (number, 3) — ribbon layers, 1–3; `threads` (number, 72) — fibres per layer, 6–180; `twist` (number, 1.2) — fold tightness; `fiberStyle` ('dots' | 'dashes' | 'lines', 'dots') — stroke pattern; `depthOfField` (number, 0.85) — blur away from focus; `mouseInteraction` (boolean, true) — pointer focus/part; `paused` (boolean, false) — freezes the flight without unmounting.
+**Motion** — Continuous shader animation driven by `speed`, `rollSpeed` and `flow`, with an intro fade and a six-program bloom chain (dots, dust, bright, down, up, composite). Reduced motion renders one static frame; `paused` does the same on demand.
+**Cost** — 41.9 KB of source, no packages. Multi-pass full-screen WebGL2 with additive bloom, 3 × 72 fibres and up to 2× DPR. It is a `h-full w-full` block with no children slot, so it can only be a backdrop. Client-only; nothing is drawn before hydration.
+**Fit for ARKRETE** — No fit. A violet fibre curtain is a screensaver, not a room; on the about page it would be decoration with no job and a second accent colour.
+**Verdict** — skip — the most expensive backdrop in the batch and the least connected to the work.

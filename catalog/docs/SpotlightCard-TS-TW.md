@@ -1,0 +1,8 @@
+# SpotlightCard
+**Registry**: `SpotlightCard-TS-TW` · **Deps**: none · **Files**: SpotlightCard/SpotlightCard.tsx
+**What it does** — A rounded dark card with a soft radial light that follows the pointer across its surface and lights the 1px border nearest the light. The light also reaches toward a pointer that comes within `proximity` pixels outside the card, and can drift on its own when idle.
+**Props** — `spotlightColor` (string, theme light: #ffffff) — colour of the glow; `intensity` (number, 0.15) — fill opacity; `spotlightSize` (number, 240) — radius in px; `softness` (number, 0.7) — hard core to wide falloff; `borderGlow` (number, 0.6) — edge brightness; `proximity` (number, 80) — px outside the card where the light starts leaning in; `ambient` (boolean, false) — slow autonomous drift; `grain` (number, 0) — noise overlay strength.
+**Motion** — Pointer-driven, no library: one rAF loop lerps light position, presence and press flare, then stops when settled. Focus-visible children pull the light to themselves, so keyboard use gets the same feedback. Reduced motion snaps the light and kills the ambient drift; pressing blooms the light briefly.
+**Cost** — No dependencies, about 12 KB of source; four absolutely positioned spans per card, a window `pointermove` listener each, and rAF only while the pointer is near or the card is ambient. The initial markup is inert — safe to prerender. `color-mix` and mask-composite need a modern browser.
+**Fit for ARKRETE** — Services, the five trade cards: a faint brass light under the pointer gives the text panels a material quality without a second accent.
+**Verdict** — adapt — cheap and on-world in brass at low intensity, but strip the white default, border glow and grain, which read as generic SaaS card.

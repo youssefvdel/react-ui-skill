@@ -1,0 +1,8 @@
+# ProfileCard
+**Registry**: `ProfileCard-TS-TW` · **Deps**: `@hugeicons/react`, `@hugeicons/core-free-icons` · **Files**: `ProfileCard/ProfileCard.tsx`
+**What it does** — Draws a 340 px ID-style card with avatar, name, title, handle, a coloured status dot and a Contact button on a dark metal frame. Moving the pointer tilts the card while a rainbow foil, a diagonal bar pattern and a glare patch slide across its face, like a holographic trading card.
+**Props** — `avatarUrl` (string, empty) — portrait; `name` (string, demo persona) — heading; `status` / `statusColor` (string, 'Online' / '#22c55e') — footer dot and label; `holo` (number, 0.8) — foil strength; `glare` (number, 0.5) — highlight opacity; `tiltStrength` (number, 12) — maximum degrees; `parallax` (number, 8) — pattern shift in px; `theme` ('dark' | 'light', 'dark').
+**Motion** — A spring rAF loop chases the pointer and writes a dozen CSS custom properties, so tilt, foil band, highlight and shadow are plain CSS transforms reading those variables. Touch drag works and `enableMobileTilt` adds deviceorientation (with permission on iOS). Reduced motion zeroes tilt and parallax; no canvas, no animation library.
+**Cost** — Two Hugeicons packages the site does not currently use (only the mail glyph is referenced). About 6.1 KB gzip of source, one rAF while the cursor moves, no images beyond the avatar. SSR-safe: markup prerenders, the effect only attaches listeners.
+**Fit for ARKRETE** — No fit. It is a product-page contact card; the about page is the firm and its trades, and rainbow foil breaks the one-accent rule outright.
+**Verdict** — skip — a trading-card gimmick, not a surface this site needs.

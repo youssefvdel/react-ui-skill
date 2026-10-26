@@ -1,0 +1,8 @@
+# Cubes
+**Registry**: `Cubes-TS-TW` · **Deps**: none · **Files**: `Cubes/Cubes.tsx`
+**What it does** — Draws a grid of outlined 3D cubes on a canvas; every cube turns to face the cursor, the ones just swept lean and spin, and clicking pushes a ripple of movement outward. Edges can be solid, dashed, dotted or off.
+**Props** — `gridSize` (number, 10; 1–40) — cubes per side. `gap` (number, 0.18) — spacing as a fraction of cell. `faceColor` / `edgeColor` (string, #120F17 / #ffffff), `edgeWidth` (1), `edgeStyle` ('solid' | 'dashed' | 'dotted' | 'none') — body colour, outline colour, line weight and stroke pattern. `maxAngle` (number, 45) — tilt limit toward the pointer. `radius` (number, 3) — cells affected around the cursor. `perspective` (number, 0) — 0 is orthographic, 1 is a wide lens. `autoAnimate` (boolean, true) — idle rotation. `paused` (boolean, false) — stops the loop and holds the last frame.
+**Motion** — WebGL2 instanced rendering: per-cube quaternions ease toward the pointer each frame, cursor velocity adds brush spin, and click rings push cubes out and back. A 1.1 s intro unfolds the grid. Reduced motion zeroes the springs and disables `autoAnimate` and ripples, leaving a static lattice.
+**Cost** — No dependencies, but ~24 KB of hand-written GLSL, quaternion and projection code the team would own and debug. gridSize 10 is 100 cubes of six quads in one draw call — cheap on GPU, but it needs WebGL2 with no non-WebGL fallback, and prerender emits an empty canvas. Client-only.
+**Fit for ARKRETE** — No fit. An outlined cube lattice is an agency/tech motif; over interior photography it reads as decoration.
+**Verdict** — skip — 24 KB of bespoke GL to draw a grid the brand does not need.

@@ -1,0 +1,8 @@
+# SpringCheck
+**Registry**: `SpringCheck-TS-TW` · **Deps**: motion@^12.23.12, @hugeicons/core-free-icons@^4.3.3 · **Files**: SpringCheck/SpringCheck.tsx
+**What it does** — A checkbox row where checking springs a filled square into the box, draws the tick with a dash offset, fades the label and strikes a rule through it. Unchecking runs the same sequence backwards.
+**Props** — `label` (ReactNode, 'Ship the build') — row text; `checked` / `defaultChecked` (boolean, false) — controlled or uncontrolled; `onChange` (boolean => void) — fires after the toggle; `color` (string, #ffffff) — label and ring ink; `fillColor` (string, #ffffff) — checked box fill, tick is #0b0b0f; `boxSize` (number, 28) — box in px; `bounce` (number, 0.2) — spring overshoot; `strike` ('left' | 'center' | 'right' | 'none', 'left') — where the rule grows from.
+**Motion** — One motion value 0→1 on a spring drives everything: fill scale, box swell past 1, tick dash, label opacity and rule `scaleX` with a 0.12 lag. Pointer press squashes the box to 0.95. Reduced motion jumps the value; keyboard activation is instant by design.
+**Cost** — Pulls the whole `motion` package (about 34 KB gzip) plus one Hugeicons path for a tick that is already three SVG points. Client component; the markup prerenders, but nothing animates until hydration. Row height is forced to at least 44 px for touch.
+**Fit for ARKRETE** — Contact form consent line, if any. But the strike-through says "task done", which is wrong for "I agree to be contacted".
+**Verdict** — skip — the strike-through is the wrong meaning for consent and the site has no task list; a styled native checkbox does this in 20 lines.

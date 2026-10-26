@@ -1,0 +1,8 @@
+# StatusMark
+**Registry**: `StatusMark-TS-TW` · **Deps**: motion@^12.23.12 · **Files**: StatusMark/StatusMark.tsx
+**What it does** — A 20 px status glyph for a job: a dashed idle ring that becomes a spinning progress arc while running, then closes into a tick or a cross with a struck-through label. Determinate progress draws the arc to the given share instead of spinning.
+**Props** — `status` ('pending' | 'running' | 'done' | 'failed' | 'cancelled', 'pending') — which glyph; `progress` (number, undefined) — 0–1, makes running determinate; `label` (ReactNode, undefined) — text beside the glyph; `size` (number, 20) — px; `strokeWidth` (number, 2) — ring weight; `dashes` (number, 8) — idle dash count; `color` (string, currentColor) / `doneColor` (#22c55e) / `errorColor` (#ef4444) — state inks; `strike` (boolean, true) — rule through the label when done.
+**Motion** — Motion values rewrite `stroke-dasharray` and `stroke-dashoffset` on an SVG circle; running spins the offset linearly forever, done and failed morph the ring to a full circle and draw the path with a CSS dash transition. Reduced motion jumps to the end state and shows the strike without animating it.
+**Cost** — `motion` for about 9.6 KB of source and one infinite rAF while running. Uses a green and a red default, i.e. two accents that are not in the palette. Small DOM, prerenders as an idle ring. No icon dependency.
+**Fit for ARKRETE** — No fit. There is no queue, job or agent state anywhere in a fit-out portfolio.
+**Verdict** — skip — a task-status glyph looking for a dashboard, and its success/error greens and reds would add colours the site does not own.

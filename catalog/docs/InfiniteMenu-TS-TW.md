@@ -1,0 +1,8 @@
+# InfiniteMenu
+**Registry**: `InfiniteMenu-TS-TW` · **Deps**: none · **Files**: InfiniteMenu/InfiniteMenu.tsx
+**What it does** — A WebGL sphere tiled with image thumbnails that you drag to spin; releasing snaps the nearest tile to the front, and the active item's title, description and arrow appear over it. A slow autoplay keeps it turning when untouched, and arrow keys step tile to tile.
+**Props** — `items` (`{image,title,description,link}[]`, empty); `count` (number, 160) — tiles on the sphere, filled by repeating the items; `tileSize` (number, 0.63); `zoom` (number, 1.65); `autoplay` (number, 3) — seconds between steps, 0 off; `grayscale` (boolean, true) and `dim` (number, 0.5) — tile treatment; `showInfo` (boolean, true) / `renderInfo` — the overlay; `onItemClick` — tile activation.
+**Motion** — Drag with inertia, snap-to-front on release, autoplay that pauses on hover or focus, all in one instanced WebGL2 draw with a quaternion sphere in the vertex shader. Keyboard accessible (`role="group"`, arrow keys, Enter). Reduced motion zeroes spin and autoplay; drag still works.
+**Cost** — No deps, ~10 KB gzip. The real cost is the atlas: every item is drawn into a canvas up to 4096² — about 64 MB of GPU memory — and all images load up front, then `count` tiles draw per frame. Client-only for content; prerenders to an empty canvas.
+**Fit for ARKRETE** — no fit — projects is deliberately a scroll stack of rooms; a sphere hides five-sixths of the photography behind a drag gesture and costs 64 MB to do it.
+**Verdict** — skip — impressive WebGL, wrong interaction for a portfolio that wants rooms seen, not hunted.

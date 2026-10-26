@@ -1,0 +1,8 @@
+# CurvedInput
+**Registry**: `CurvedInput-TS-TW` · **Deps**: none · **Files**: `CurvedInput/CurvedInput.tsx`
+**What it does** — A single-line input bent along a circular arc: the text, the caret and the submit chip are all drawn on SVG paths that follow the curve, and clicking anywhere on the band drops the caret at the nearest character. A real hidden `<input>` sits underneath so typing, paste and mobile keyboards still behave.
+**Props** — `bend` (number, 28 px) — sagitta; 0 is flat, sign flips the arch. `width` (number | string, 450) and `height` (number, 64) — outer size of the bar. `theme` ('dark' | 'light', 'dark') — base palette. `buttonColor` / `backgroundColor` / `textColor` / `borderColor` — per-part overrides. `showButton` / `showIcon` (boolean, true) — submit chip and leading mail glyph. `placeholder` (string, 'Enter your email') — ghost text while the field is empty. `onSubmit` (fn) — fires with the value.
+**Motion** — No motion library. The only animation is a 250 ms focus glow behind the band and an SMIL caret blink; text and button respond to hover with a 200 ms brightness filter. Nothing checks prefers-reduced-motion, so the caret blinks regardless.
+**Cost** — Zero dependencies, ~20 KB source, SVG paths rebuilt on every resize and measured again after webfonts load. Critically, it renders `null` until a `ResizeObserver` reports a width — so prerender, no-JS and first paint all show an empty form box on the one page whose job is the inquiry.
+**Fit for ARKRETE** — No fit. Contact is the only form, and its first field is a full inquiry, not a bent email chip.
+**Verdict** — skip — an arc for its own sake, and it ships blank HTML on the conversion page.

@@ -1,0 +1,8 @@
+# ReflectiveCard
+**Registry**: `ReflectiveCard-TS-TW` · **Deps**: `@hugeicons/react`, `@hugeicons/core-free-icons` · **Files**: `ReflectiveCard/ReflectiveCard.tsx`
+**What it does** — A 320×500 metal ID card whose surface is a live WebGL reflection of a looping video or the visitor's webcam, blurred, warped and tinted like brushed steel, with glare that moves as the card tilts. Name, role, badge, status, an ID number and a fingerprint tile sit on top.
+**Props** — `name` / `role` / `badge` / `status` (string, demo persona) — printed fields; `videoSrc` (string) — clip used as the reflection; `webcam` (boolean, false) — asks for the camera instead; `tint` (string, '#ffffff') — metal colour; `metalness` (number, 1); `roughness` (number, 0.3); `blurStrength` (number, 6); `tiltStrength` (number, 12) — maximum degrees.
+**Motion** — Drag or pointer motion feeds rotateX/rotateY into a per-frame shader that samples the video texture, warps and blurs it and adds a moving specular highlight; an intro lifts the card into place; reduced motion drops the tilt and refuses to autoplay the clip.
+**Cost** — Two Hugeicons packages, about 11.6 KB gzip of source. A hidden `<video>` kept playing plus a per-frame texture upload and a multi-pass blur — real GPU and battery cost — and `webcam` triggers a permission prompt before anything appears. Client-only; no SSR value beyond the printed text.
+**Fit for ARKRETE** — No fit. An ID badge that mirrors the visitor is a portfolio trick, camera access on a contractor's site is a bounce, and the card chrome duplicates nothing the site needs.
+**Verdict** — skip — camera permission and per-frame video upload for a demo object.

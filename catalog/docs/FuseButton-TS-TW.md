@@ -1,0 +1,8 @@
+# FuseButton
+**Registry**: `FuseButton-TS-TW` · **Deps**: `@hugeicons/react@^1.1.10`, `@hugeicons/core-free-icons@^4.3.3` · **Files**: `FuseButton/FuseButton.tsx`
+**What it does** — An action button that, upon clicking, transitions into an "Undo" state with a burning SVG border or line countdown timer before finalizing the action. If the user clicks Undo before the timer expires, the action is cancelled; otherwise it commits and transitions to a done state.
+**Props** — `label` (string, 'Archive') — idle button label text; `undoLabel` (string, 'Undo') — state label during the countdown window; `undoWindow` (number, 4000) — countdown duration in milliseconds; `fuse` ('outline' | 'bottom' | 'top', 'outline') — placement of the burning progress line; `commitOn` ('press' | 'fuseEnd', 'press') — whether commit triggers immediately or after the timer finishes; `pauseOnHover` (boolean, true) — halts the countdown timer when the button is hovered; `settle` ('reset' | 'stay', 'reset') — whether button resets to idle or stays in settled state; `fuseColor` (string, '#f5a524') — color of the animated fuse stroke.
+**Motion** — Web Animations API (`element.animate`) driving SVG `strokeDashoffset` or CSS `scaleX` linearly over `undoWindow` ms; crossfade between button states. Triggered on click/press.
+**Cost** — 14.1 KB source, plus two HugeIcons dependencies. Light DOM (button + SVG rect or span line). Survives SSR.
+**Fit for ARKRETE** — no fit — ARKRETE is an architectural brochure site with no destructive actions, and the contact inquiry form does not need a 4-second undo fuse.
+**Verdict** — skip — undo-fuse action pattern is meant for SaaS destructive actions, not architectural inquiries, and adds two icon packages.

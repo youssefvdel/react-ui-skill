@@ -1,0 +1,8 @@
+# CallChip
+**Registry**: `CallChip-TS-TW` · **Deps**: `@hugeicons/react@^1.1.10`, `@hugeicons/core-free-icons@^4.3.3` · **Files**: CallChip/CallChip.tsx
+**What it does** — An interactive status pill for tool execution with an icon, action label, monospace argument, progress fill bar, and elapsed millisecond counter. The fill wipes across during runtime and switches to a green checkmark or shakes horizontally with a red warning on failure.
+**Props** — `name` (string, 'bash') — tool or action title; `argument` (string, 'npm test') — parameter string; `status` ('idle' | 'running' | 'done' | 'error', 'running') — lifecycle execution phase; `expectedMs` (number, 2500) — runtime benchmark pacing the progress fill; `showTimer` (boolean, true) — toggles live millisecond timer readout; `shake` (number, 6) — pixel displacement for the error wobble; `onRetry` (() => void, undefined) — retry click callback; `icon` (CallChipIcon | ReactNode, 'terminal') — leading glyph.
+**Motion** — CSS scaleX transition for progress wipe up to 88% while running and 100% on done, rAF timer updating elapsed milliseconds, Web Animations API keyframes for horizontal shake on error, and CSS translateY icon flip. No GSAP or Framer Motion; reduced motion drops the error shake.
+**Cost** — ~12 KB source plus two `@hugeicons` packages; client-only animation logic (rAF, DOMMatrix, Web Animations API), though the base pill markup survives static prerender.
+**Fit for ARKRETE** — no fit. Monospace argument strings, terminal icons, and millisecond counters belong in developer tooling, not an interior fit-out portfolio.
+**Verdict** — skip — developer HUD pill for AI tool calls with no relevance to interior fit-out architecture.

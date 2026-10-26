@@ -1,0 +1,8 @@
+# GhostCursor
+**Registry**: `GhostCursor-TS-TW` · **Deps**: none · **Files**: GhostCursor/GhostCursor.tsx
+**What it does** — A plume of glowing smoke that trails the cursor, curls upward as it rises, blooms at the edges and fades out about a second after the pointer stops. Clicking puffs a fresh cloud; on dark it composites with `screen` over whatever is behind it.
+**Props** — `color` (string, #B497CF) — smoke tint; `size` (number, 80) — head radius in px; `trailLength` (number, 50) — frames of trail, 1–200; `inertia` (number, 0.5) — how lazily the head follows; `turbulence` (number, 0.5) — curl amount; `bloomStrength` (number, 0.6) — glow gain; `clickPuff` (boolean, true) — burst on pointer down; `fadeDelayMs` (number, 1000 desktop / 500 touch) — idle time before the plume dissolves.
+**Motion** — Pointer-driven WebGL2 simulation: five passes (sim, shade, downsample, blur, composite) on ping-pong float targets, with a budget of 600k pixels desktop / 300k touch. The container is `absolute inset-0` at `zIndex: 10` and forces its parent to `position: relative`. Reduced motion only skips the intro — the trail still animates.
+**Cost** — 32.3 KB, no packages, but it demands WebGL2 plus `EXT_color_buffer_float` and returns nothing without them. Five shader programs and several 600k-pixel float FBOs per instance. Client-only; SSR emits an empty overlay.
+**Fit for ARKRETE** — No fit. Purple smoke chasing the cursor over interior photography is costume, and the overlay would sit above the room reel.
+**Verdict** — skip — heavy float-buffer simulation for decoration, and it has no calm static state under reduced motion.

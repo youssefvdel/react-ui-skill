@@ -1,0 +1,8 @@
+# InfiniteSpiral
+**Registry**: `InfiniteSpiral-TS-TW` · **Deps**: none · **Files**: InfiniteSpiral/InfiniteSpiral.tsx
+**What it does** — Hangs image cards in a vertical helix in CSS 3D: each card orbits a cylinder, the centre one scaled up, the ends fading and blurring out. It loops forever, driven by autoplay, drag, page scroll or all three.
+**Props** — `items` (`string | {src,alt,href,label}[]`, empty); `speed` (number, 0.55); `direction` (`up` | `down`, up); `animationMode` (`auto` | `drag` | `scroll` | `all`, auto); `radius` (number, 170); `cardWidth` / `cardHeight` (number, 100); `verticalSpacing` (number, 60) — distance between turns; `cardsPerTurn` (number, 7); `edgeFade` (number, 0.3) / `edgeBlur` (number, 6).
+**Motion** — One rAF loop computes each card's angle, depth scale, opacity, blur and z-index and writes inline transforms; drag maps pointer Y to progress with easing, scroll mode maps page scroll. No library, pure CSS 3D. Reduced motion stops autoplay only — the loop keeps writing styles every frame, so it is never truly static.
+**Cost** — No deps, ~3.4 KB gzip, no canvas; N `<img>` elements, first six eager and the rest lazy. The unconditional rAF plus per-card style writes is constant main-thread work, and before hydration every card sits unpositioned in the centre — it needs a static fallback and a reduced-motion stop.
+**Fit for ARKRETE** — no fit — an infinite carousel hides most of its images and reads as a portfolio widget; the projects stack already owns image sequencing.
+**Verdict** — skip — cheap and pretty, but it competes with the room stack and never rests.

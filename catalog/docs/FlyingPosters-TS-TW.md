@@ -1,0 +1,8 @@
+# FlyingPosters
+**Registry**: `FlyingPosters-TS-TW` · **Deps**: none · **Files**: `FlyingPosters/FlyingPosters.tsx`
+**What it does** — Renders an infinite column or grid of image posters tumbling through 3D space on a WebGL2 canvas. As the user drags, scrolls, or wheels, the posters twist along an axis with perspective curvature and flip over 180 degrees.
+**Props** — `items` (FlyingPostersItem[], `[]`) — image URLs or objects with links and alt text; `planeWidth` / `planeHeight` (number, 320 × 320) — poster quad dimensions in pixels; `distortion` (number, 3) — curvature warp factor during scroll motion; `scrollEase` (number, 0.01) — inertial damping factor for scroll and drag velocity; `columns` (number, 1) — number of parallel poster streams; `rotation` (number, 180) — twist angle around the travel axis; `axis` ('vertical' | 'horizontal' | 'diagonal', 'vertical') — travel trajectory; `drag` / `wheel` (boolean, true) — enables pointer drag and wheel input listeners.
+**Motion** — Continuous WebGL2 vertex shader deforming quads via perspective distortion, rotation, and lean uniforms; driven by scroll position, pointer drag, or mouse wheel. Pauses via IntersectionObserver when scrolled out of view.
+**Cost** — 23.0 KB source, no npm dependencies. Client-only WebGL2 context; decodes and uploads all images as GL textures; provides no native `<img>` elements for SEO or static prerendering.
+**Fit for ARKRETE** — no fit — interior photography must remain planar, stable, and true to proportion, not twisted and flipped in a 3D perspective vortex.
+**Verdict** — skip — twisting and barrel-distorting interior photography ruins architectural presentation and provides zero SSR image fallback.

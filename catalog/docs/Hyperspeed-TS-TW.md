@@ -1,0 +1,8 @@
+# Hyperspeed
+**Registry**: `Hyperspeed-TS-TW` · **Deps**: three@^0.180.0 · **Files**: Hyperspeed/Hyperspeed.tsx
+**What it does** — A night highway in three.js: instanced glowing tube trails for up to 160 vehicles, lanes and median lines, roadside poles, dust and a bloom pass, all bending along a chosen curve. Holding the pointer boosts speed and widens the field of view into a hyperspace stretch, then eases back.
+**Props** — `curve` (`straight` | `gentle` | `winding` | `hills` | `racing` | `deep`, winding); `speed` (number, 1); `boost` (number, 3) and `boostFov` (number, 130) — hold behaviour; `lanes` (number, 3); `density` (number, 40) — vehicles on the road; `trailLength` (number, 1) and `lightSize` (number, 1); `theme` (`dark` | `light`, dark) or explicit tail/head/road colours; `interactive` (boolean, true).
+**Motion** — A continuous three.js render loop with post-processing bloom, gated by an IntersectionObserver; pointer down boosts (`onBoostStart` / `onBoostEnd`), pointer x steers, the road scrolls forever. Reduced motion only slows time to 0.3× — it never becomes static.
+**Cost** — `three@^0.180` is roughly 150 KB gzip on its own, plus ~10 KB of component, two render targets at DPR ≤ 2 and 160 instanced meshes with 1,500 dust points. Against the 150 KB initial budget it can only ever be a lazy chunk, and it still loads a mobile GPU hard. Client-only; the container renders empty.
+**Fit for ARKRETE** — no fit — a racing-game highway has nothing to do with interiors, and its palette is neon.
+**Verdict** — skip — the heaviest thing in the batch for the least relevant image.

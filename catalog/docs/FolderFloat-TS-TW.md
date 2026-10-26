@@ -1,0 +1,8 @@
+# FolderFloat
+**Registry**: `FolderFloat-TS-TW` · **Deps**: `matter-js@^0.20.0` · **Files**: `FolderFloat/FolderFloat.tsx`
+**What it does** — An interactive folder tab that tilts open on hover or click, releasing note pills that float up into a cloud above it. When physics is active, the pills become 2D rigid bodies that drift, collide with each other, and can be dragged and tossed with the pointer.
+**Props** — `items` (FolderFloatItem[], DEFAULT_ITEMS) — list of note pills to display; `label` (string, 'Design feedback') — folder tab text; `trigger` ('hover' | 'click', 'hover') — open trigger event; `physics` (boolean, true) — enables Matter.js 2D rigid body simulation; `spread` (number, 180) — horizontal cloud scatter width in pixels; `lift` (number, 26) — vertical ejection distance above the folder; `drift` (number, 0.5) — floating noise amplitude; `closeOnSelect` (boolean, true) — closes the folder when an item pill is clicked.
+**Motion** — CSS keyframe transitions for flap opening, followed by a continuous Matter.js 2D physics loop with zero-gravity collision bounds, pointer dragging, and floating drift.
+**Cost** — 19.6 KB source + `matter-js` (~85 KB minified/gzip ~25 KB). Heavy client JS overhead; instantiates a 2D physics engine instance and requestAnimationFrame loop upon opening.
+**Fit for ARKRETE** — no fit — floating draggable feedback pills springing out of an office folder is playful SaaS product UI, not serious architectural contracting.
+**Verdict** — skip — 85 KB 2D physics engine for floating note pills is playful SaaS fodder with zero relevance to luxury fit-outs.

@@ -1,0 +1,8 @@
+# BubbleMenu
+**Registry**: `BubbleMenu-TS-TW` · **Deps**: gsap@^3.13.0 · **Files**: BubbleMenu/BubbleMenu.tsx
+**What it does** — Puts a floating logo pill and a round hamburger bubble at the top of the page; opening it fills the viewport with giant pill-shaped links that scale up from nothing in a staggered burst, each with its own tilt and hover colour. The close state reverses the same bubbles and fades the labels.
+**Props** — `logo` (ReactNode | string, required) — mark inside the left bubble; `items` ({ label, href, rotation?, hoverStyles? }[], demo set) — the links; `menuBg` (string, `#fff`) — bubble fill; `menuContentColor` (string, `#111`) — bubble text; `useFixedPosition` (boolean, false) — fixed instead of absolute; `animationDuration` (number, 0.5) — seconds per bubble; `staggerDelay` (number, 0.12) — seconds between bubbles; `animationEase` (string, `back.out(1.5)`) — GSAP ease for the scale.
+**Motion** — GSAP timelines per bubble on open and close, with a random ±0.05s jitter on each delay; labels rise and fade on a second tween. A resize handler re-applies rotation, and the hamburger lines rotate with plain CSS. No reduced-motion branch. Client-only overlay.
+**Cost** — GSAP core, roughly 25 KB gzipped, for a menu CSS could do with transforms; 3 KB of source and an injected `<style>` block. Five large pills plus a full-screen layer, reflowing to one column below 900px. The default hover colours are blue, green, amber, red and violet.
+**Fit for ARKRETE** — No fit — the brand's nav should be three quiet words in a corner, not a field of pastel bubbles.
+**Verdict** — skip — GSAP for an overlay, a rainbow of per-item hover colours, and a playful language that fights the dark-luxury world.

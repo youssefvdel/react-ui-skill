@@ -1,0 +1,8 @@
+# StarBorder
+**Registry**: `StarBorder-TS-TW` · **Deps**: none · **Files**: StarBorder/StarBorder.tsx
+**What it does** — Wraps a button, link or card in a canvas that draws a bright segment travelling the exact rounded outline, trailing light behind it and optionally shedding stardust. The star laps the border on hover, brightens or appears on hover depending on mode, and pulses where you click.
+**Props** — `as` ('button' | 'a' | element, 'button') — rendered tag; `color` (string, white) — star colour; `trailColor` (string, colour) — tail tint; `duration` (number, 4) — seconds per lap; `thickness` (number, 1) — border width; `radius` (number, 12) — corner radius of the path; `trailLength` (number, 0.3) — tail as a share of the outline; `sparkle` (boolean, false) — emits dust motes.
+**Motion** — Canvas 2D at device pixel ratio, driven by rAF: the outline is built from eight line and arc segments, the star's phase advances at a constant cruise, and hover or click adds an eased lap or a pulse. IntersectionObserver stops the loop offscreen; reduced motion parks the star but keeps the drawn border.
+**Cost** — No dependencies, but 23 KB of source and its own canvas per instance, bled 48 px on every side so it needs overflow room. One continuous rAF while visible and moving, plus a ResizeObserver. The canvas is decorative and hidden from assistive tech.
+**Fit for ARKRETE** — The one brass action, "Start a project". Which is exactly where a second moving light should not be.
+**Verdict** — skip — a twinkling comet on the only brass element turns the accent into decoration; a static 1 px brass border already does the job.

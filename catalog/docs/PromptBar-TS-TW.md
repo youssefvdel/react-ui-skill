@@ -1,0 +1,8 @@
+# PromptBar
+**Registry**: `PromptBar-TS-TW` · **Deps**: `motion@^12.23.12`, `@hugeicons/react`, `@hugeicons/core-free-icons` · **Files**: `PromptBar/PromptBar.tsx`
+**What it does** — A chat composer: a textarea that grows to five rows, an `@` menu of sources (files, web search, sales data, mail, calendar), a `/` command menu, a model picker with five effort steps, and attach, mic and send buttons. Send morphs into a stop square, and a spark fountain fires when the field is full.
+**Props** — `placeholder` (string, 'Ask anything'); `sources` (PromptBarSource[], six demo sources); `commands` (PromptBarCommand[], five slash commands); `models` (PromptBarModel[], Nova 3 / Mini / 2); `onSend` (text, {attachments, model, effort}) — submit hook; `busy` (boolean, false) — swaps send for stop; `width` (number, 400); `maxRows` (number, 5).
+**Motion** — Framer Motion (`motion/react`) animates the panel morph, the send glyph squashing from arrow to square with a tilt, menu entrances and the effort slider; the textarea height is measured and animated; a 2D canvas draws the sparks. `useReducedMotion` collapses every duration to zero.
+**Cost** — `motion` is a new dependency at roughly 34 KB gzip, plus two Hugeicons packages, plus about 8.9 KB gzip of component source — close to a third of the 150 KB budget for one control. Text measurement, menu state and a canvas keep it busy, and it prerenders only as a static shell.
+**Fit for ARKRETE** — No fit. The contact page is a named-field inquiry form ("Send us the drawings"), not a prompt box, and none of the AI affordances mean anything to a fit-out client.
+**Verdict** — skip — an entire AI chat product compressed into a control the site has no use for.

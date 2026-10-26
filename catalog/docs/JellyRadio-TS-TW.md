@@ -1,0 +1,8 @@
+# JellyRadio
+**Registry**: `JellyRadio-TS-TW` · **Deps**: motion · **Files**: `JellyRadio/JellyRadio.tsx`
+**What it does** — A horizontal group of radio pill buttons where selecting an option causes the active pill to swell and squash in scale. Adjacent pills get barged outward horizontally with a staggered spring recoil before settling.
+**Props** — `items` (JellyRadioItem[], 5 items) — array of option labels or value objects; `value` / `defaultValue` (string) — active selected value; `onChange` ((val, idx) => void) — selection callback; `size` ('sm' | 'md' | 'lg', 'md') — pill padding and font size; `swell` (number, 0.2) — active chip growth factor; `barge` (number, 6) — pixel displacement pushed onto neighbours; `bounce` (number, 0.25) — spring bounciness; `stagger` (number, 22) — delay in milliseconds per neighbor distance step.
+**Motion** — Selection click triggers spring physics on scale and horizontal translation motion values; neighbours bounce away and oscillate back. Driven by Framer Motion (`motion/react`). Reduced motion cancels swell, barge, and jelly distortions into an immediate flat transition.
+**Cost** — Requires `motion@^12.23.12` (~34 KB gzip, not installed in the repo); 9.6 KB source. Minimal DOM overhead (a flex row of button chips) and low CPU cost. Prerenders static HTML buttons, hydrating motion values on the client.
+**Fit for ARKRETE** — no fit. Playful, bouncy rubber-toy physics contradict the quiet, restrained architectural tone of the site.
+**Verdict** — skip — playful squashing springs contradict architectural austerity and drag in motion/react for a form toggle.

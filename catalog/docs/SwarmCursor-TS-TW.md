@@ -1,0 +1,8 @@
+# SwarmCursor
+**Registry**: `SwarmCursor-TS-TW` · **Deps**: none · **Files**: `SwarmCursor/SwarmCursor.tsx`
+**What it does** — A transparent canvas of up to 800 particles that chase the pointer as a liquid swarm, curling into eddies and pouring around any element matching `targets`. On click the swarm bursts outward, and it can gather, roam or hide when the pointer leaves.
+**Props** — `count` (number, 800, capped at 2000) — particles; `size` (number, 2.6) — particle size; `shape` (`dot`|`streak`|`square`, dot) — sprite; `color` / `accentColor` (string) — body and tint; `spread` (number, 90) — swarm radius; `speed` (number, 1), `swirl` (number, 0.6), `wander` (number, 0.5) — flow character; `targets` (string, `a, button, [data-swarm-target]`) — elements the swarm flows around; `idle` (`roam`|`gather`|`hide`, roam) and `clickEffect` (`burst`|`pulse`|`none`) — behaviour at rest and on press.
+**Motion** — Continuous raf while the pointer is inside and the container is visible: CPU spring integration plus curl noise for every particle, a coarse 16 px signed-distance grid for hovered buttons, and one instanced WebGL2 draw. No animation library.
+**Cost** — No dependency, ~36 KB of source, up to 2000 simulated agents per frame in JS arrays — main-thread cost scales with `count`. Full-section canvas, so it only makes sense inside a `relative` block with children; client-only, and reduced motion stops the simulation and leaves one static frame.
+**Fit for ARKRETE** — no fit. A cursor-chasing swarm is ambient noise over photography, and it duplicates the pointer the site already has.
+**Verdict** — skip — main-thread particle work for decoration that fights every calm room shot.

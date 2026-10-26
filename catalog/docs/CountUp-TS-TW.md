@@ -1,0 +1,8 @@
+# CountUp
+**Registry**: `CountUp-TS-TW` · **Deps**: motion@^12.23.12 · **Files**: `CountUp/CountUp.tsx`
+**What it does** — Counts a figure from one value to another when it scrolls into view, either as plain changing text or as odometer columns where each digit rolls on its own delay. Roll mode adds vertical motion blur and can compress large numbers to K/M/B.
+**Props** — `to` (number, required) — the end value. `from` (number, 0), `direction` ('up' | 'down', 'up') — start value and travel direction. `duration` (number, 2) — seconds. `mode` ('count' | 'roll', 'count') — text swap versus digit strips. `format` ('standard' | 'compact', 'standard') — 12,400 versus 12.4K. `separator` (string, '') — thousands mark. `trigger` ('view' | 'load', 'view') — IntersectionObserver or immediately. `replayOnHover` (boolean, false) — re-runs on pointer enter.
+**Motion** — One `animate(0, duration)` tween drives a render callback; roll mode writes `translateY` on digit strips and sets an SVG Gaussian blur from instantaneous speed. Starts once, on view or load; prefers-reduced-motion calls the finish path immediately and shows the final value.
+**Cost** — motion@12, roughly 20–25 KB gzip, for what is ultimately a text tween. Roll mode creates a four-cell strip plus a blur filter per digit and a hidden measure row, so a four-digit figure is dozens of nodes. The plain mode server-renders the `from` value, so prerender shows `0` (or the start) until JS runs.
+**Fit for ARKRETE** — No fit. There is no figure on the site worth counting, and the brief rules out stat rows.
+**Verdict** — skip — a stat-row part for a site that deliberately has no stats.

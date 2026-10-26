@@ -1,0 +1,8 @@
+# SquishSwitch
+**Registry**: `SquishSwitch-TS-TW` · **Deps**: motion@^12.23.12 · **Files**: SquishSwitch/SquishSwitch.tsx
+**What it does** — A pill switch whose thumb stretches along its direction of travel in proportion to speed, then squashes against the end of the track when it arrives. It can be dragged as well as clicked, and follows the finger while dragged.
+**Props** — `checked` / `defaultChecked` (boolean, false) — controlled or not; `onChange` (boolean => void) — fired on commit; `width` (number, 76) and `height` (number, 38) — track size; `radius` (number, 19) — track corner; `trackColor` (string, #27272a) / `trackOnColor` (string, #f5f5f5) — off and on track; `speed` (number, 50) — spring stiffness curve; `stretch` (number, 36) — how far the thumb elongates; `label` (string, '') — optional text beside the track.
+**Motion** — Motion springs on `x`; `useVelocity` feeds a second spring that scales the thumb up to 1.4× along travel and down across it, so it thins as it stretches. Hover swells it 1.035×. Drag uses pointer capture with a 4/8 px tap slop, Escape cancels. Reduced motion jumps and zeroes the stretch.
+**Cost** — `motion` only, about 8 KB of source and a handful of spans. Fully client-side; the track renders correctly before hydration but the thumb sits at the unchecked end until JS runs. Adds one `useId` and a hidden-label association.
+**Fit for ARKRETE** — No fit. Nothing on the site is switched on or off — not the theme, not a filter, not a preference.
+**Verdict** — skip — a delightful switch with nothing to switch; importing motion for it would be the definition of decoration with no job.
