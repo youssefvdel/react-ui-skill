@@ -75,3 +75,36 @@ a type system, a corner radius, or an opinion about cards.
 - [ ] No layout shift at load (measure CLS, not by eye)
 - [ ] Prerender passes with JS disabled: the section still reads
 - [ ] Screenshot at 1440 and 390, in both motion modes
+
+## What actually broke when eight were ported into a live site
+
+Evidence from one real integration (dark, photography-led marketing site, eight
+components across five pages). Every one of these was caught by a measurement,
+not by reading the code back.
+
+- **`aria-hidden` on the wrapper silently removes the label.** A decorative
+  wrapper that contains the button's text must not be hidden from assistive
+  technology — the link then has no accessible name. The axe rule is
+  `link-name`, and it fires on the *link*, not the wrapper, so it reads as if the
+  button were empty.
+- **A clipped-background heading needs a visible fallback.** `background-clip:
+  text` with `color: transparent` is invisible until the image decodes. If the
+  decode fails, the heading is blank. Start with plain ink and switch the fill on
+  once `img.decode()` resolves.
+- **A frame with a fixed height needs its children to fill it.** An image inside
+  a `height: 62svh` frame keeps its own aspect ratio and leaves a black bar under
+  itself on a phone. `.frame > * { height: 100% }` — the wrapper is part of the
+  layout, not a bystander.
+- **Marquees need an edge mask, not an overflow.** A word sliced by the frame
+  reads as a bug; a two-line `mask-image` fade reads as motion. It is also one
+  line of CSS.
+- **Element-level screenshots fight scroll-hijacking layouts.** On a page with a
+  custom scroll stack, `scrollIntoViewIfNeeded` + element screenshot closed the
+  browser repeatedly. Take a viewport screenshot instead, or the crash reads as a
+  bug in the component.
+- **Headless Chromium on SwiftShader dies after ~20 WebGL demos.** Restart the
+  browser every N pages and make the capture resumable, or the second half of the
+  survey silently does not exist.
+- **Masked type only works at display size.** At 2rem the photograph inside the
+  letters is a faint gradient; at 4.6rem it is a photograph. If the effect has to
+  justify itself, give it the size it needs or drop it.
