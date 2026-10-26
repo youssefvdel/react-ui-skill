@@ -108,3 +108,13 @@ not by reading the code back.
 - **Masked type only works at display size.** At 2rem the photograph inside the
   letters is a faint gradient; at 4.6rem it is a photograph. If the effect has to
   justify itself, give it the size it needs or drop it.
+
+- **A divider that hides a seam is not a fix.** The marquee band sat between the
+  hero and the next section, so nobody saw that the hero photograph ended on a
+  hard cut. Removing the band exposed it; a 12vh bottom fade into the ground is
+  the actual fix. When a decorative element is deleted, look at what it was
+  covering.
+- **Effects that draw over a photograph while it loads are the first thing to
+  cut.** A mosaic grid that "resolves" into the image reads as a slow load to
+  everyone who did not build it. `loading=lazy` + a correct srcset is the whole
+  feature.
