@@ -207,8 +207,9 @@ example (`references/catalog.md`):
 ## Verify
 
 ```bash
-python3 scripts/verify_catalog.py        # every doc vs its payload
-ls docs/reactbits/components/*.md | wc -l   # must equal the payload count
+python3 scripts/verify_catalog.py                 # this repo's catalogue
+python3 scripts/verify_catalog.py ../some-site/docs/reactbits   # a survey root
+ls catalog/docs/*.md | wc -l        # must equal the payload count (218)
 ```
 
 Then open three docs at random and check they name a real prop from the source.
