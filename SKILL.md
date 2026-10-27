@@ -1,21 +1,31 @@
 ---
 name: reactbits
-description: "Use when browsing, choosing, surveying, or installing React Bits components — one component into a page, or all 218 judged against a design system before refactoring a site."
-version: 2.0.0
+description: "Use when choosing React UI for a page: React Bits motion components (218, visually reviewed), HeroUI app components (72, React Aria), or Untitled UI React source (101 groups, MIT). Pick one component, survey a whole library, or decide which of the three fits the surface."
+version: 2.1.0
 author: Hermes Agent
 license: MIT
 metadata:
   hermes:
-    tags: [frontend, react, component-library, animation, research, parallel-agents]
+    tags: [frontend, react, component-library, animation, design-system, heroui, untitled-ui, research]
     related_skills: [port-ui-components, pick-ui-library, impeccable, animation-performance]
 ---
 
-# React Bits
+# React UI: three sources
 
-React Bits is a free library of ~218 animated React components, published as a
-shadcn-style registry: each component is served as a JSON payload containing its
-TSX source. There is no npm package to depend on and no version to pin — you
-read the source and either install it or vendor it.
+Three libraries, three jobs. Choose the source before you choose a component —
+picking a HeroUI modal to decorate a hero, or a React Bits shine on a settings
+form, is how a page ends up looking assembled.
+
+| Source | What it is | Reach for it when | Reference |
+|---|---|---|---|
+| **React Bits** | ~218 animated components, shadcn-style JSON registry, no dependency | motion, effects, text animation, a moment on a page | this file, `references/catalog.md` |
+| **HeroUI** | 72 installed components, React 19 + Tailwind v4 + **React Aria** | product surfaces: tables, modals, pickers, forms, a11y solved | `references/heroui.md` |
+| **Untitled UI React** | ~101 component groups, **source copied in**, MIT core | whole SaaS/dashboard/auth surfaces fast, layout patterns | `references/untitled-ui.md` |
+
+The short version: **React Bits is art, HeroUI is behaviour, Untitled UI is a
+floor plan.** A marketing page with a point of view takes its motion from React
+Bits and writes its own chrome; a product surface takes HeroUI and restyles the
+tokens; a dense back-office takes Untitled UI and accepts its look.
 
 Two modes, chosen by what was asked:
 
@@ -27,6 +37,11 @@ Two modes, chosen by what was asked:
 Never survey 218 components to answer a question about one, and never pick a
 single component by name when the task is "make this page better" — the library
 is big and the obvious first result is usually the demo-looking one.
+
+The rest of this file is React Bits, because that is the library that needs a
+catalogue, a survey procedure and a visual verdict per component. The other two
+are documented in `references/`: what they contain, what they cost, and — more
+usefully — when they are the wrong answer.
 
 ---
 
@@ -235,4 +250,8 @@ A catalogue that passes the script but reads like marketing was written from
 - `references/porting.md` — how to vendor a component into a design system
   without importing its demo look.
 - `references/brief-template.md` — the rubric to paste into each subagent.
+- `references/heroui.md` — HeroUI v3: install, the 72 components by category,
+  what its React Aria base buys you, and the v2/v3 trap.
+- `references/untitled-ui.md` — Untitled UI React: what is MIT and what is paid,
+  CLI and manual install, the 101 groups, and why `--overwrite` is dangerous.
 - `scripts/` — fetch, batch, verify, re-audit.

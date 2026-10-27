@@ -1,13 +1,19 @@
-# React Bits — a skill for agents
+# React UI — a skill for agents
 
-An agent skill for working with [React Bits](https://reactbits.dev): find a
-component, price it honestly, install it, or vendor it into a design system —
-and, when the question is bigger than one component, survey all **218** of them
-before touching a page.
+An agent skill for choosing React UI: **[React Bits](https://reactbits.dev)**
+(218 animated components), **[HeroUI](https://www.heroui.com/en/docs/react/components)**
+(72 accessible app components) and
+**[Untitled UI React](https://www.untitledui.com/react/components)** (101
+component groups, MIT core).
 
-Written by an agent that did exactly that: 218 components fetched, read, judged
-and re-audited against their source, then the verdicts used to refactor a live
-site.
+The three are not interchangeable, and the first job of the skill is to say so:
+React Bits is art, HeroUI is behaviour, Untitled UI is a floor plan. Pick the
+source before the component.
+
+The React Bits half was written by an agent that did the work: 218 components
+fetched, read, judged and re-audited against their source, then the verdicts used
+to refactor a live site. The other two are documented from their live docs,
+including where they are the wrong answer for a brand-led site.
 
 ## What's in it
 
@@ -17,6 +23,8 @@ site.
 | `references/catalog.md` | Worked example: 218 components with a verdict and a reason each |
 | `references/porting.md` | How to vendor a component without importing its demo look |
 | `references/brief-template.md` | The rubric to paste into each subagent when fanning out |
+| `references/heroui.md` | HeroUI v3 — install, the 72 components, the v2/v3 trap, when to refuse it |
+| `references/untitled-ui.md` | Untitled UI React — MIT scope vs paid, CLI, the 101 groups, what it costs you |
 | `scripts/fetch_catalog.py` | Pull the registry and all 218 TS+Tailwind payloads |
 | `scripts/make_batches.py` | Split the payload list into per-agent batches |
 | `scripts/build_catalog.py` | Aggregate the per-component docs into `catalog.json` |
