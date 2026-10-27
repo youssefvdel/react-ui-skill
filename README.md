@@ -1,14 +1,13 @@
 # React UI — a skill for agents
 
-An agent skill for choosing React UI: **[React Bits](https://reactbits.dev)**
-(218 animated components), **[HeroUI](https://www.heroui.com/en/docs/react/components)**
-(72 accessible app components) and
-**[Untitled UI React](https://www.untitledui.com/react/components)** (101
-component groups, MIT core).
+An agent skill for navigating the modern React UI ecosystem:
+- **Base Primitives**: **[shadcn/ui](https://ui.shadcn.com)** (~50 Radix primitives, the de-facto registry format).
+- **Motion & Art**: **[React Bits](https://reactbits.dev)** (218 standalone motion components, visually surveyed), plus **[Magic UI](https://magicui.design)** (shadcn-native motion) and **[Aceternity UI](https://ui.aceternity.com)** (maximalist hero visuals).
+- **Accessible Behavior**: **[HeroUI](https://www.heroui.com/en/docs/react/components)** (72 React Aria components for complex forms/inputs).
+- **Floor Plans & Blocks**: **[Untitled UI React](https://www.untitledui.com/react/components)** (101 groups, MIT core), **[Origin UI](https://originui.com)** (500+ form inputs), and **[Tailwind Plus](https://tailwindui.com)**.
+- **Data & Dashboards**: **[Tremor / Tremor Raw](https://tremor.so)** (charts, metrics, analytics).
 
-The three are not interchangeable, and the first job of the skill is to say so:
-React Bits is art, HeroUI is behaviour, Untitled UI is a floor plan. Pick the
-source before the component.
+The core rule: **shadcn is the skeleton, React Bits/Magic UI is art, HeroUI is behavior, Untitled UI is a floor plan, and Tremor is data.** Pick the archetype before the library.
 
 The React Bits half was written by an agent that did the work: 218 components
 fetched, read, judged and re-audited against their source, then the verdicts used
@@ -23,7 +22,10 @@ including where they are the wrong answer for a brand-led site.
 | `references/catalog.md` | Worked example: 218 components with a verdict and a reason each |
 | `references/porting.md` | How to vendor a component without importing its demo look |
 | `references/brief-template.md` | The rubric to paste into each subagent when fanning out |
+| `references/shadcn.md` | shadcn/ui — the base registry archetype, components.json, Radix primitives, Tailwind CSS variables |
+| `references/motion-sources.md` | Motion peers: Magic UI (shadcn-native), Aceternity UI (maximalist), Motion Primitives, Animata |
 | `references/heroui.md` | HeroUI v3 — install, the 72 components, the v2/v3 trap, when to refuse it |
+| `references/blocks-sources.md` | Block sets & dashboards: Origin UI (500+ form inputs), Tremor (charts & metrics), Tailwind Plus |
 | `references/untitled-ui.md` | Untitled UI React — MIT scope vs paid, CLI, the 101 groups, what it costs you |
 | `scripts/fetch_catalog.py` | Pull the registry and all 218 TS+Tailwind payloads |
 | `scripts/make_batches.py` | Split the payload list into per-agent batches |

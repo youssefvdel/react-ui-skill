@@ -1,31 +1,30 @@
 ---
 name: react-ui
-description: "Use when choosing React UI for a page: React Bits motion components (218, visually reviewed), HeroUI app components (72, React Aria), or Untitled UI React source (101 groups, MIT). Pick one component, survey a whole library, or decide which of the three fits the surface."
-version: 2.1.1
+description: "Use when choosing React UI for a page: primitive registry (shadcn/ui), motion/art (React Bits, Magic UI, Aceternity), accessible product surfaces (HeroUI), or turnkey blocks & dashboards (Untitled UI, Origin UI, Tremor, Tailwind Plus). Routes the archetype before the component."
+version: 2.2.0
 author: Hermes Agent
 license: MIT
 metadata:
   hermes:
-    tags: [frontend, react, component-library, animation, design-system, heroui, untitled-ui, research]
+    tags: [frontend, react, component-library, animation, design-system, shadcn, magic-ui, heroui, untitled-ui, origin-ui, tremor, research]
     related_skills: [port-ui-components, pick-ui-library, impeccable, animation-performance]
 ---
 
-# React UI: three sources
+# React UI: the ecosystem archetypes
 
-Three libraries, three jobs. Choose the source before you choose a component —
-picking a HeroUI modal to decorate a hero, or a React Bits shine on a settings
-form, is how a page ends up looking assembled.
+Choose the architectural archetype before you choose a component library.
+Picking a HeroUI modal to decorate a hero, or a React Bits canvas on an admin
+settings form, is how a page ends up looking disjointed.
 
-| Source | What it is | Reach for it when | Reference |
+| Archetype | Leading Libraries | Reach for it when | Reference |
 |---|---|---|---|
-| **React Bits** | ~218 animated components, shadcn-style JSON registry, no dependency | motion, effects, text animation, a moment on a page | this file, `references/catalog.md` |
-| **HeroUI** | 72 installed components, React 19 + Tailwind v4 + **React Aria** | product surfaces: tables, modals, pickers, forms, a11y solved | `references/heroui.md` |
-| **Untitled UI React** | ~101 component groups, **source copied in**, MIT core | whole SaaS/dashboard/auth surfaces fast, layout patterns | `references/untitled-ui.md` |
+| **The Base Registry** | **shadcn/ui** (~50 primitives, Radix UI) | Core product foundations; atomic building blocks you own and modify in your repo | `references/shadcn.md` |
+| **Motion & Art** | **React Bits** (~218 reviewed, standalone), **Magic UI**, **Aceternity UI** | High-craft moments, landing page hero effects, interactive motion layers | this file, `references/motion-sources.md` |
+| **Accessible Behavior** | **HeroUI** (72 components, React Aria + Tailwind v4) | Complex accessible inputs, date pickers, tables, and product surfaces with zero setup | `references/heroui.md` |
+| **Floor Plan & Blocks** | **Untitled UI React** (101 groups), **Origin UI** (500+ inputs), **Tailwind Plus** | Full marketing sections, dense form inputs, or turnkey SaaS layouts | `references/untitled-ui.md`, `references/blocks-sources.md` |
+| **Dashboards & Charts** | **Tremor / Tremor Raw** (copy-paste analytics) | Data visualization, metric cards, KPI grids, and analytics portals | `references/blocks-sources.md` |
 
-The short version: **React Bits is art, HeroUI is behaviour, Untitled UI is a
-floor plan.** A marketing page with a point of view takes its motion from React
-Bits and writes its own chrome; a product surface takes HeroUI and restyles the
-tokens; a dense back-office takes Untitled UI and accepts its look.
+The short rule: **shadcn is the skeleton, React Bits/Magic UI is art, HeroUI is behavior, Untitled UI is a floor plan, and Tremor is data.**
 
 Two modes, chosen by what was asked:
 
@@ -250,6 +249,9 @@ A catalogue that passes the script but reads like marketing was written from
 - `references/porting.md` — how to vendor a component into a design system
   without importing its demo look.
 - `references/brief-template.md` — the rubric to paste into each subagent.
+- `references/shadcn.md` — shadcn/ui: the base registry archetype, components.json, Radix primitives, Tailwind CSS variables.
+- `references/motion-sources.md` — Motion peers: Magic UI (shadcn-compatible), Aceternity UI (maximalist), Motion Primitives, Animata.
+- `references/blocks-sources.md` — Block sets & dashboards: Origin UI (500+ form inputs), Tremor (charts & metrics), Tailwind Plus (commercial).
 - `references/heroui.md` — HeroUI v3: install, the 72 components by category,
   what its React Aria base buys you, and the v2/v3 trap.
 - `references/untitled-ui.md` — Untitled UI React: what is MIT and what is paid,
