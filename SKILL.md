@@ -1,7 +1,7 @@
 ---
-name: reactbits
+name: react-ui
 description: "Use when choosing React UI for a page: React Bits motion components (218, visually reviewed), HeroUI app components (72, React Aria), or Untitled UI React source (101 groups, MIT). Pick one component, survey a whole library, or decide which of the three fits the surface."
-version: 2.1.0
+version: 2.1.1
 author: Hermes Agent
 license: MIT
 metadata:
