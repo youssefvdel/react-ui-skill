@@ -37,8 +37,8 @@ including where they are the wrong answer for a brand-led site.
 ## Install as a Hermes skill
 
 ```bash
-git clone https://github.com/youssefvdel/reactbits-skill.git ~/Projects/reactbits-skill
-ln -s ~/Projects/reactbits-skill ~/.hermes/skills/reactbits
+git clone https://github.com/youssefvdel/react-ui-skill.git ~/Projects/react-ui-skill
+ln -s ~/Projects/react-ui-skill ~/.hermes/skills/react-ui
 ```
 
 Any agent that reads `SKILL.md` can use it; nothing in it is Hermes-specific
