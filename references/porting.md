@@ -118,3 +118,36 @@ not by reading the code back.
   cut.** A mosaic grid that "resolves" into the image reads as a slow load to
   everyone who did not build it. `loading=lazy` + a correct srcset is the whole
   feature.
+
+## GSAP components on a prerendered site
+
+- **Load GSAP dynamically, once.** `gsap` + `ScrollTrigger` is ~44 KB gzip. A
+  static `import` bills it to first paint; a promise that both components share
+  puts it in the deferred chunk. Initial budget: unchanged.
+- **Apply the from-state from JS, never from CSS.** The scroll-reveal a GSAP
+  component replaces usually lives in a stylesheet as `opacity: 0` plus an
+  observer class. That is the fragile version: a thrown bundle leaves the content
+  invisible. `gsap.set()` inside the effect can only animate something that was
+  already visible.
+- **A scrub timeline's first piece finishes early.** With `stagger` on a scrub
+  timeline, total duration is `1 + maxDelay`, so sampler code that checks
+  `pieces[0]` reports "already settled" at 60% progress. Sample the middle piece
+  when verifying, and walk the scroll in steps rather than jumping to one offset.
+- **`back.out` overshoots scale.** On a piece rising from `scaleY: 2.1`, a back
+  ease drives it *under* 1 for a few frames — a visible squash. `power2.out` keeps
+  the settle monotonic.
+- **Clamp a stagger over long lists.** `stagger: 0.08` across forty children is
+  still arriving three seconds later. A function stagger with
+  `Math.min(i * each, 0.4)` lands as a wave instead of a queue.
+- **Splitting text creates an accessibility bug in two directions.** Hide the
+  pieces from AT and give the heading one `sr-only` copy of the sentence — do not
+  put `aria-label` on the element and leave the characters readable as well.
+
+## Two edits that only fail in the accessibility tree
+
+- A control with `aria-label="Jump to room 1"` showing the text `01` trips
+  axe's `label-content-name-mismatch`: the visible text must appear in the
+  accessible name. Add the words beside the number instead of replacing it.
+- `background-clip: text` with `color: transparent` is invisible in forced-colors
+  and in any engine without the property. Guard with
+  `@media (forced-colors: active)` and `@supports not (background-clip: text)`.
